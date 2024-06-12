@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { useRef, useReducer, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment, OrbitControls } from "@react-three/drei";
+import { useGLTF, Environment, OrbitControls, Loader } from "@react-three/drei";
 import { BallCollider, CuboidCollider, Physics, RigidBody } from "@react-three/rapier";
 
 const accents = ["#DCFC62", "#F24B2A", "#ff4060", "#ffcc00"];
@@ -27,6 +27,7 @@ export function Balls(props) {
   };
   const connectors = useMemo(() => shuffle(accent), [accent]);
   return (
+    <><Loader/>
     <Canvas
       onClick={handleClick}
       // shadows
@@ -49,7 +50,7 @@ export function Balls(props) {
       {/*   <N8AO distanceFalloff={1} aoRadius={1} intensity={4} /> */}
       {/* </EffectComposer> */}
       <Environment preset="city" />
-    </Canvas>
+    </Canvas></>
   );
 }
 
@@ -114,3 +115,5 @@ function Model({ children, index, size, roughness = 0, ...props }) {
     </>
   );
 }
+
+useGLTF.preload('/models/tennis_ball.glb')

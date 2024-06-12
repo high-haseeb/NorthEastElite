@@ -45,7 +45,7 @@ export function Balls(props) {
           connectors.map((props, i) => <Connector key={i} index={i} size={props.size} {...props} jiggle={jiggle} />) /* prettier-ignore */
         }
       </Physics>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       {/* <EffectComposer disableNormalPass multisampling={8}> */}
       {/*   <N8AO distanceFalloff={1} aoRadius={1} intensity={4} /> */}
       {/* </EffectComposer> */}
